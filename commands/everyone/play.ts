@@ -1,4 +1,5 @@
 import Commando, { Client, CommandoMessage } from 'discord.js-commando';
+import { avantOuApres } from '../../sondages';
 
 export default class AddNumbersCommand extends Commando.Command {
     constructor(client: Client) {
@@ -14,12 +15,9 @@ export default class AddNumbersCommand extends Commando.Command {
 
     async run(msg: CommandoMessage, { options }: { options: string[] }) {
         console.log(options)
-        const message = await msg.channel.send(`Avant manger ou après manger ? 🍔
-🍽️ Avant ! 
-🍝 Après ! 
-`)
-        await message.react('🍽️')
-        await message.react('🍝')
+
+        await avantOuApres(msg)
+
         return msg;
     }
 };

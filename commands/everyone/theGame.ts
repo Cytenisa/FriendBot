@@ -1,4 +1,5 @@
 import Commando, { Client, CommandoMessage } from 'discord.js-commando';
+import { theGame } from '../../sondages';
 
 export default class AddNumbersCommand extends Commando.Command {
     constructor(client: Client) {
@@ -14,24 +15,9 @@ export default class AddNumbersCommand extends Commando.Command {
 
     async run(msg: CommandoMessage, { options }: { options: string[] }) {
         console.log(options)
-        const message = await msg.channel.send(`Quel jeu ? 🎮
-⚽ RL
-🏃 Fall Guys
-⛏️ Minecraft
-✏️ Skribbl
-⚔️ Pummel
-👮 The Division
-🧙 Destiny
-🧟 WWZ
-`)
-        await message.react('⚽')
-        await message.react('🏃')
-        await message.react('⛏️')
-        await message.react('✏️')
-        await message.react('⚔️')
-        await message.react('👮')
-        await message.react('🧙')
-        await message.react('🧟')
+
+        await theGame(msg)
+
         return msg;
     }
 };
