@@ -1,7 +1,8 @@
+import { CommandInteraction } from 'discord.js';
 import Commando, { Client, CommandoMessage } from 'discord.js-commando';
 import { theGame } from '../../sondages';
 
-export default class AddNumbersCommand extends Commando.Command {
+/* export default class AddNumbersCommand extends Commando.Command {
     constructor(client: Client) {
         super(client, {
             name: 'thegame',
@@ -12,12 +13,10 @@ export default class AddNumbersCommand extends Commando.Command {
 
         });
     }
+}; */
 
-    async run(msg: CommandoMessage, { options }: { options: string[] }) {
-        console.log(options)
+export const thegame = async (interaction: CommandInteraction) => {
+    await theGame(interaction)
 
-        await theGame(msg)
-
-        return msg;
-    }
-};
+    return interaction;
+}

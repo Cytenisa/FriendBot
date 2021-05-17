@@ -1,9 +1,9 @@
-import { Emoji, MessageReaction, ReactionEmoji, ReactionManager, User } from 'discord.js';
+import { CommandInteraction, Emoji, Interaction, Message, MessageReaction, ReactionEmoji, ReactionManager, TextChannel, User } from 'discord.js';
 import Commando, { Client, CommandoMessage } from 'discord.js-commando';
 import CONSTANTS from '../../constant'
 import { theGame, avantOuApres } from '../../sondages'
 
-export default class AddNumbersCommand extends Commando.Command {
+/* export default class AddNumbersCommand extends Commando.Command {
     constructor(client: Client) {
         super(client, {
             name: 'game',
@@ -14,60 +14,68 @@ export default class AddNumbersCommand extends Commando.Command {
 
         });
     }
+}; */
 
-    async run(msg: CommandoMessage, { options }: { options: string[] }) {
-        console.log(options)
+export const game = async (interaction: CommandInteraction) => {
+    const channel = interaction.channel as TextChannel
 
-        const message = await msg.channel.send(`Voulez-vous jouer ce soir ? 😀`)
-        await message.react('👍')
-        await message.react('👎')
+    await interaction.reply(`C'est parti !`, { ephemeral: true })
 
-        const timeout = setInterval(async () => {
-            let allVotes = new Map<string, string>()
+    const message = await channel.send(`Voulez-vous jouer ce soir ? 😀`)
 
-            const reactions = message.reactions.cache.array()
-            // console.log('reactions', reactions)
-            reactions.forEach((r) => {
-                const users = r.users.cache.array()
+    await message.react('👍')
+    await message.react('👎')
 
-                // console.log('users.length', users.length);
+    const timeout = setInterval(async () => {
+        let allVotes = new Map<string, string>()
 
-                users.forEach(user => {
-                    // console.log('user.id', user.id)
-                    if (user.id === '839546069759164426') {
-                        return
-                    }
-                    if (!allVotes.has(user.id)) {
+        const reactions = message.reactions.cache.array()
+        reactions.forEach((r) => {
+            const users = r.users.cache.array()
+
+            users.forEach(user => {
+                if (user.id === '839546069759164426') {
+                    return
+                }
+                if (!allVotes.has(user.id)) {
+                    if (r.emoji.name) {
                         allVotes.set(user.id, r.emoji.name)
                     }
-                })
-            })
-
-            if (
-                (
-                    allVotes.has(CONSTANTS.Nashento) || allVotes.has(CONSTANTS.Framboyse)
-                ) && (
-                    allVotes.has(CONSTANTS.Armaldio) || allVotes.has(CONSTANTS.Cytenisa)
-                )
-            ) {
-
-                const yes = Array.from(allVotes.values()).filter(emoji => emoji === '👍').length
-                const no = Array.from(allVotes.values()).filter(emoji => emoji === '👎').length
-
-                clearInterval(timeout)
-                if (no === 0) {
-                    await avantOuApres(msg)
-                    await theGame(msg)
-                } else {
-                    await msg.channel.send(`Hé bien passez une bonne soirée ! :D`)
                 }
-            }
-        }, 10 * 1000)
+            })
+        })
 
-        setTimeout(() => {
+        // if (
+        //     (
+        //         allVotes.has(CONSTANTS.Cytenisa)
+        //     ) && (
+        //         allVotes.has(CONSTANTS.Armaldio)
+        //     )
+        // ) {
+        if (
+            (
+                allVotes.has(CONSTANTS.Nashento) || allVotes.has(CONSTANTS.Framboyse)
+            ) && (
+                allVotes.has(CONSTANTS.Armaldio) || allVotes.has(CONSTANTS.Cytenisa)
+            )
+        ) {
+
+            const yes = Array.from(allVotes.values()).filter(emoji => emoji === '👍').length
+            const no = Array.from(allVotes.values()).filter(emoji => emoji === '👎').length
+
             clearInterval(timeout)
-        }, 2 * 3600 * 1000)
+            if (no === 0) {
+                await avantOuApres(interaction)
+                await theGame(interaction)
+            } else {
+                await channel.send(`Hé bien passez une bonne soirée ! :D`)
+            }
+        }
+    }, 10 * 1000)
 
-        return msg;
-    }
-};
+    setTimeout(() => {
+        clearInterval(timeout)
+    }, 2 * 3600 * 1000)
+
+    return interaction;
+}

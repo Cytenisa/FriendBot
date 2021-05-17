@@ -1,0 +1,4 @@
+applications:
+- name: FriendBot
+  no-route: true
+  memory: 256M
