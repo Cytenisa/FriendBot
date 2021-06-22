@@ -36,17 +36,17 @@ client
             const commands: ApplicationCommandData[] = [
                 {
                     name: 'game',
-                    description: 'demande si on joue ou non',
+                    description: 'est-ce qu\'on joue ou non',
                     options: []
                 },
                 {
                     name: 'play',
-                    description: 'demande si joue avant ou après',
+                    description: 'avant ou après',
                     options: []
                 },
                 {
                     name: 'thegame',
-                    description: 'demande à quoi on joue',
+                    description: 'quel jeu ?',
                     options: []
                 }
             ]

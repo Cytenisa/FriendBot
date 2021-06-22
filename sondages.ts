@@ -21,23 +21,24 @@ export async function theGame(interaction: CommandInteraction) {
         await interaction.reply(`C'est parti !`, { ephemeral: true })
     }
     if (channel) {
+        const games = [
+            ['⚽', 'RL'],
+            ['🏃', 'Fall Guys'],
+            ['⛏️', 'Minecraft'],
+            ['✏️', 'Skribbl'],
+            ['❔', 'Codename'],
+            // ['⚔️', 'Pummel'],
+            // ['👮', 'The Division'],
+            // ['🧙', 'Destiny'],
+            // ['🧟', 'WWZ'],
+        ]
         const message = await channel.send(`Quel jeu ? 🎮
-        ⚽ RL
-        🏃 Fall Guys
-        ⛏️ Minecraft
-        ✏️ Skribbl
-        ⚔️ Pummel
-        👮 The Division
-        🧙 Destiny
-        🧟 WWZ
+
+${games.map(([icon, name]) => `${icon} ${name}`).join('\n')}
+
         `)
-        await message.react('⚽')
-        await message.react('🏃')
-        await message.react('⛏️')
-        await message.react('✏️')
-        await message.react('⚔️')
-        await message.react('👮')
-        await message.react('🧙')
-        await message.react('🧟')
+        for (let [icon, name] of games) {
+            await message.react(icon)
+        }
     }
 }
