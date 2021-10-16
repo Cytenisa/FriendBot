@@ -16,7 +16,7 @@ import { avantOuApres } from '../../sondages';
 }; */
 
 export const play = async (interaction: CommandInteraction) => {
-    await avantOuApres(interaction)
+    await avantOuApres(interaction, true)
 
     return interaction;
 }

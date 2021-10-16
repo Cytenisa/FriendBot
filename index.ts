@@ -68,6 +68,7 @@ client
         };
         if (interaction.commandName === 'play') {
             await play(interaction)
+            await thegame(interaction)
             return;
         };
         if (interaction.commandName === 'thegame') {

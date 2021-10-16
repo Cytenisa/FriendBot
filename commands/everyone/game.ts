@@ -22,6 +22,7 @@ export const game = async (interaction: CommandInteraction) => {
     await interaction.reply(`C'est parti !`, { ephemeral: true })
 
     const message = await channel.send(`Voulez-vous jouer ce soir ? 😀`)
+    await channel.send(`*N'oubliez pas de mettre à jour vos jeux*`)
 
     await message.react('👍')
     await message.react('👎')
@@ -65,10 +66,10 @@ export const game = async (interaction: CommandInteraction) => {
 
             clearInterval(timeout)
             if (no === 0) {
-                await avantOuApres(interaction)
+                await avantOuApres(interaction, false)
                 await theGame(interaction)
             } else {
-                await channel.send(`Hé bien passez une bonne soirée ! :D`)
+                await channel.send(`Bonne soirée à vous ! :D`)
             }
         }
     }, 10 * 1000)
