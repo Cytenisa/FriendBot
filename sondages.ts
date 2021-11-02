@@ -2,7 +2,7 @@ import { CommandInteraction, Message, TextChannel } from 'discord.js'
 
 export async function avantOuApres(interaction: CommandInteraction, updateGamesMessage = false) {
     if (!interaction.replied) {
-        await interaction.reply(`C'est parti !`, { ephemeral: true })
+        await interaction.reply({ ephemeral: true, content: `C'est parti !` })
     }
     const channel = interaction.channel as TextChannel
     if (channel) {
@@ -22,19 +22,22 @@ export async function avantOuApres(interaction: CommandInteraction, updateGamesM
 export async function theGame(interaction: CommandInteraction) {
     const channel = interaction.channel as TextChannel
     if (!interaction.replied) {
-        await interaction.reply(`C'est parti !`, { ephemeral: true })
+        await interaction.reply({ ephemeral: true, content: `C'est parti !` })
     }
     if (channel) {
         const games = [
+            ['☠️', 'Left for dead 2'],
+            ['🧟', 'Killing Floor'],
+            ['🎮','Core'],
             ['⚽', 'RL'],
             ['🏃', 'Fall Guys'],
             // ['⛏️', 'Minecraft'],
             ['✏️', 'Skribbl'],
             ['❔', 'Codename'],
             // ['⚔️', 'Pummel'],
-            ['👮', 'The Division'],
+            //['👮', 'The Division'],
             // ['🧙', 'Destiny'],
-            ['🧟', 'WWZ'],
+            
         ]
         const message = await channel.send(`Quel jeu ? 🎮
 

@@ -11,7 +11,8 @@ import { play } from './commands/everyone/play'
 import { thegame } from './commands/everyone/theGame'
 
 const intents = new Intents([
-    Intents.NON_PRIVILEGED,
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MESSAGES,
     // "GUILD_MEMBERS",
     // "GUILD_PRESENCES"
 ]);

@@ -19,8 +19,9 @@ import { theGame, avantOuApres } from '../../sondages'
 export const game = async (interaction: CommandInteraction) => {
     const channel = interaction.channel as TextChannel
 
-    await interaction.reply(`C'est parti !`, { ephemeral: true })
+    await interaction.reply({ content: `C'est parti !`, ephemeral: true })
 
+    await channel.send(`Demande de: ${interaction.member.user.username}`)
     const message = await channel.send(`Voulez-vous jouer ce soir ? 😀`)
     await channel.send(`*N'oubliez pas de mettre à jour vos jeux*`)
 
@@ -30,9 +31,9 @@ export const game = async (interaction: CommandInteraction) => {
     const timeout = setInterval(async () => {
         let allVotes = new Map<string, string>()
 
-        const reactions = message.reactions.cache.array()
+        const reactions = [...message.reactions.cache.values()]
         reactions.forEach((r) => {
-            const users = r.users.cache.array()
+            const users = [...r.users.cache.values()]
 
             users.forEach(user => {
                 if (user.id === '839546069759164426') {
