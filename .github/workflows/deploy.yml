@@ -11,6 +11,7 @@ jobs:
         with:
           node-version: '16'
       - run: yarn build
+      - run: yarn install
       - name: Deploy to IBM Cloud Foundry
         # You may pin to the exact commit or the version.
         uses: IBM/cloudfoundry-deploy@master
