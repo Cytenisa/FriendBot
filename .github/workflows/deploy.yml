@@ -12,6 +12,8 @@ jobs:
           node-version: '16'
       - run: yarn install
       - run: yarn build
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
       - name: Deploy to IBM Cloud Foundry
         # You may pin to the exact commit or the version.
         uses: IBM/cloudfoundry-deploy@master
