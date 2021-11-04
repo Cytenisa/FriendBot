@@ -4,9 +4,8 @@ import CONSTANTS from '../../constant'
 import { theGame, avantOuApres } from '../../sondages'
 
 import dayjs from 'dayjs'
-import('dayjs/locale/fr')
-
-dayjs.locale('fr')
+import * as locale from 'dayjs/locale/fr'
+dayjs.locale(locale)
 
 /* export default class AddNumbersCommand extends Commando.Command {
     constructor(client: Client) {
@@ -26,7 +25,7 @@ export const game = async (interaction: CommandInteraction) => {
 
     await interaction.reply({ content: `C'est parti !`, ephemeral: true })
 
-    await channel.send(`Demande de ${interaction.member.user.username} le ${dayjs().format('dddd DD MMMM YYYY')}`)
+    await channel.send(`Demande de ${interaction.member.user.username} le ${dayjs().format('dddd DD MMMM')}`)
     const message = await channel.send(`Voulez-vous jouer ce soir ? 😀`)
     await channel.send(`*N'oubliez pas de mettre à jour vos jeux*`)
 
