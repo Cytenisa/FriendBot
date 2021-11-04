@@ -121,19 +121,9 @@ client.login(process.env.TOKEN).then(c => {
     const channel = client.channels.cache.get('880474479627743252') as TextChannel
     if (channel) {
         var job = new CronJob(
-            '0 17 * * THU',
+            '5 17 * * THU',
             async () => {
                 await channel.send(`Les nouveaux jeux Epic sont disponibles !`)
-            },
-            null,
-            true,
-            'Europe/Paris'
-        );
-
-        var job2 = new CronJob(
-            '* * * * *',
-            async () => {
-                console.log('ok')
             },
             null,
             true,
