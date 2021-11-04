@@ -117,7 +117,6 @@ client
 //     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.login(process.env.TOKEN).then(c => {
-    console.log([...client.channels.cache.values()].map(c => c.id))
     const channel = client.channels.cache.get('880474479627743252') as TextChannel
     if (channel) {
         var job = new CronJob(
