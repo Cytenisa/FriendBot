@@ -3,6 +3,11 @@ import Commando, { Client, CommandoMessage } from 'discord.js-commando';
 import CONSTANTS from '../../constant'
 import { theGame, avantOuApres } from '../../sondages'
 
+import dayjs from 'dayjs'
+import('dayjs/locale/fr')
+
+dayjs.locale('fr')
+
 /* export default class AddNumbersCommand extends Commando.Command {
     constructor(client: Client) {
         super(client, {
@@ -21,7 +26,7 @@ export const game = async (interaction: CommandInteraction) => {
 
     await interaction.reply({ content: `C'est parti !`, ephemeral: true })
 
-    await channel.send(`Demande de : ${interaction.member.user.username}`)
+    await channel.send(`Demande de ${interaction.member.user.username} le ${dayjs().format('dddd DD MMMM YYYY')}`)
     const message = await channel.send(`Voulez-vous jouer ce soir ? 😀`)
     await channel.send(`*N'oubliez pas de mettre à jour vos jeux*`)
 
@@ -48,11 +53,11 @@ export const game = async (interaction: CommandInteraction) => {
         })
 
         // if (
-        //     (
-        //         allVotes.has(CONSTANTS.Cytenisa)
-        //     ) && (
-        //         allVotes.has(CONSTANTS.Armaldio)
-        //     )
+        //      (
+        //          allVotes.has(CONSTANTS.Cytenisa)
+        //      ) || (
+        //          allVotes.has(CONSTANTS.Armaldio)
+        //      )
         // ) {
         if (
             (
@@ -64,6 +69,9 @@ export const game = async (interaction: CommandInteraction) => {
 
             const yes = Array.from(allVotes.values()).filter(emoji => emoji === '👍').length
             const no = Array.from(allVotes.values()).filter(emoji => emoji === '👎').length
+
+            console.log('yes')
+            console.log('no')
 
             clearInterval(timeout)
             if (no === 0) {
