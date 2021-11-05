@@ -10,12 +10,14 @@ export async function avantOuApres(interaction: CommandInteraction, updateGamesM
             await channel.send(`*N'oubliez pas de mettre à jour vos jeux*`)
         }
 
-        const message = await channel.send(`Avant manger ou après manger ? 🍔
+        const message = await channel.send(`Avant ou après manger / les deux ? 🍔
     🍝 Avant !
     🍽️ Après !
+    😱 Les deux !
     `)
     await message.react('🍝')
     await message.react('🍽️')
+    await message.react('😱')
     }
 }
 
