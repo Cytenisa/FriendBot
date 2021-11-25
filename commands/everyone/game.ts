@@ -2,6 +2,7 @@ import { CommandInteraction, Emoji, Interaction, Message, MessageReaction, React
 import Commando, { Client, CommandoMessage } from 'discord.js-commando';
 import CONSTANTS from '../../constant'
 import { theGame, avantOuApres } from '../../sondages'
+import {emojis} from '../../emojis'
 
 import dayjs from 'dayjs'
 import * as locale from 'dayjs/locale/fr'
@@ -22,6 +23,8 @@ dayjs.locale(locale)
 
 export const game = async (interaction: CommandInteraction) => {
     const channel = interaction.channel as TextChannel
+
+   const creator = interaction.user.id
 
     await interaction.reply({ content: `C'est parti !`, ephemeral: true })
 
@@ -51,31 +54,61 @@ export const game = async (interaction: CommandInteraction) => {
             })
         })
 
-        // if (
-        //      (
-        //          allVotes.has(CONSTANTS.Cytenisa)
-        //      ) || (
-        //          allVotes.has(CONSTANTS.Armaldio)
-        //      )
-        // ) {
-        if (
+        /*if (
             (
+               (creator === CONSTANTS.Cytenisa || creator === CONSTANTS.Armaldio) &&
                 allVotes.has(CONSTANTS.Nashento) || allVotes.has(CONSTANTS.Framboyse)
-            ) && (
-                allVotes.has(CONSTANTS.Armaldio) || allVotes.has(CONSTANTS.Cytenisa)
+            ) || (
+                (creator === CONSTANTS.Cytenisa || creator === CONSTANTS.Armaldio) &&
+                allVotes.has(CONSTANTS.Nashento) || allVotes.has(CONSTANTS.Framboyse)
             )
-        ) {
-
+        ) {*/
+        if (true) {
             const yes = Array.from(allVotes.values()).filter(emoji => emoji === '👍').length
             const no = Array.from(allVotes.values()).filter(emoji => emoji === '👎').length
 
-            console.log('yes')
-            console.log('no')
-
             clearInterval(timeout)
             if (no === 0) {
-                await avantOuApres(interaction, false)
-                await theGame(interaction)
+                const when = await avantOuApres(interaction, false)
+                const game = await theGame(interaction)
+
+                // timeout of 15 minutes
+                setTimeout(async () => {
+                    let whenString = ''
+                    let gameString = ''
+                    if  (when) {
+                        const reactions = [...when.reactions.cache.values()]
+                        const reactionsCount = reactions.map((r) => ({
+                            count: r.count,
+                            id: r.emoji.name
+                        }))
+                        .sort((a, b) => b.count - a.count)
+
+                        //@ts-ignore
+                        whenString = reactionsCount[0].id + ' ' + emojis.when[reactionsCount[0].id]
+
+                        console.log('when reactionsCount', reactionsCount)
+                    }
+
+                    if (game) {
+                        const reactions = [...game.reactions.cache.values()]
+                        const reactionsCount = reactions.map((r) => ({
+                            count: r.count,
+                            id: r.emoji.name
+                        }))
+                        .sort((a, b) => b.count - a.count)
+
+                        gameString = reactionsCount.filter(
+                            r => r.count === reactionsCount[0].count
+                            //@ts-ignore
+                         ).map(r => r.id + ' ' + emojis.game[r.id])
+                         .join(', ') ?? '🤷'
+
+                        console.log('game reactionsCount', reactionsCount)
+                    }
+
+                    await channel.send(`Nous jouerons donc a ${gameString}, ${whenString}`)
+                }, 30 *  1000/*15 * 60 * 1000*/)
             } else {
                 await channel.send(`Bonne soirée à vous ! :D`)
             }

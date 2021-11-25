@@ -1,4 +1,5 @@
 import { CommandInteraction, Message, TextChannel } from 'discord.js'
+import {emojis} from './emojis'
 
 export async function avantOuApres(interaction: CommandInteraction, updateGamesMessage = false) {
     if (!interaction.replied) {
@@ -11,13 +12,13 @@ export async function avantOuApres(interaction: CommandInteraction, updateGamesM
         }
 
         const message = await channel.send(`Avant ou après manger / les deux ? 🍔
-    🍝 Avant !
-    🍽️ Après !
-    😱 Les deux !
-    `)
-    await message.react('🍝')
-    await message.react('🍽️')
-    await message.react('😱')
+${Object.entries(emojis.when).map(([icon, name]) => `${icon} ${name} !`).join('\n')}
+        `)
+
+        for (let [icon, name] of Object.entries(emojis.when)) {
+            await message.react(icon)
+        }
+        return message
     }
 }
 
@@ -27,27 +28,15 @@ export async function theGame(interaction: CommandInteraction) {
         await interaction.reply({ ephemeral: true, content: `C'est parti !` })
     }
     if (channel) {
-        const games = [
-            ['☠️', 'Left for dead 2'],
-            ['🧟', 'Killing Floor'],
-            ['🎮','Core'],
-            ['⚽', 'RL'],
-            ['🏃', 'Fall Guys'],
-            // ['⛏️', 'Minecraft'],
-            ['✏️', 'Skribbl'],
-            ['❔', 'Codename'],
-            // ['⚔️', 'Pummel'],
-            //['👮', 'The Division'],
-            // ['🧙', 'Destiny'],
-            
-        ]
         const message = await channel.send(`Quel jeu ? 🎮
 
-${games.map(([icon, name]) => `${icon} ${name}`).join('\n')}
+${Object.entries(emojis.game).map(([icon, name]) => `${icon} ${name}`).join('\n')}
 
         `)
-        for (let [icon, name] of games) {
+        for (let [icon, name] of Object.entries(emojis.game)) {
             await message.react(icon)
         }
+
+        return message
     }
 }
