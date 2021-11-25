@@ -117,8 +117,7 @@ client
 //     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.login(
-    // process.env.TOKEN
-    'ODM5NTQ2MDY5NzU5MTY0NDI2.YJLONQ.cIuvO5yoQsZFQoLxBlimL9qzdzc'
+    process.env.TOKEN
 ).then(c => {
     const channel = client.channels.cache.get('880474479627743252') as TextChannel
     if (channel) {
