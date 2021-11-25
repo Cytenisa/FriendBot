@@ -36,6 +36,7 @@ export async function theGame(interaction: CommandInteraction) {
             // ['⛏️', 'Minecraft'],
             ['✏️', 'Skribbl'],
             ['❔', 'Codename'],
+            ['💣', 'KTANE'],
             // ['⚔️', 'Pummel'],
             //['👮', 'The Division'],
             // ['🧙', 'Destiny'],
