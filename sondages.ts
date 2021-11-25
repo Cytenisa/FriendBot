@@ -28,6 +28,21 @@ export async function theGame(interaction: CommandInteraction) {
         await interaction.reply({ ephemeral: true, content: `C'est parti !` })
     }
     if (channel) {
+        const games = [
+            ['☠️', 'Left for dead 2'],
+            ['🧟', 'Killing Floor'],
+            ['🎮','Core'],
+            ['⚽', 'RL'],
+            ['🏃', 'Fall Guys'],
+            // ['⛏️', 'Minecraft'],
+            ['✏️', 'Skribbl'],
+            ['❔', 'Codename'],
+            ['💣', 'KTANE'],
+            // ['⚔️', 'Pummel'],
+            //['👮', 'The Division'],
+            // ['🧙', 'Destiny'],
+
+        ]
         const message = await channel.send(`Quel jeu ? 🎮
 
 ${Object.entries(emojis.game).map(([icon, name]) => `${icon} ${name}`).join('\n')}
