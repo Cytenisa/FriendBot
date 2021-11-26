@@ -54,7 +54,7 @@ export const game = async (interaction: CommandInteraction) => {
             })
         })
 
-        /*if (
+        if (
             (
                (creator === CONSTANTS.Cytenisa || creator === CONSTANTS.Armaldio) &&
                 allVotes.has(CONSTANTS.Nashento) || allVotes.has(CONSTANTS.Framboyse)
@@ -62,8 +62,7 @@ export const game = async (interaction: CommandInteraction) => {
                 (creator === CONSTANTS.Cytenisa || creator === CONSTANTS.Armaldio) &&
                 allVotes.has(CONSTANTS.Nashento) || allVotes.has(CONSTANTS.Framboyse)
             )
-        ) {*/
-        if (true) {
+        ) {
             const yes = Array.from(allVotes.values()).filter(emoji => emoji === '👍').length
             const no = Array.from(allVotes.values()).filter(emoji => emoji === '👎').length
 
@@ -108,7 +107,7 @@ export const game = async (interaction: CommandInteraction) => {
                     }
 
                     await channel.send(`Nous jouerons donc a ${gameString}, ${whenString}`)
-                }, 30 *  1000/*15 * 60 * 1000*/)
+                }, 15 * 60 * 1000)
             } else {
                 await channel.send(`Bonne soirée à vous ! :D`)
             }
