@@ -10,7 +10,7 @@ export const emojis = {
         '🎮': 'Core',
         '⚽': 'RL',
         '🏃': 'Fall Guys',
-        '⛏️', 'Minecraft',
+        '⛏️': 'Minecraft',
         '✏️': 'Skribbl',
         '❔': 'Codename',
         '💣': 'KTANE',
