@@ -13,7 +13,8 @@ export const emojis = {
         '⛏️': 'Minecraft',
         '✏️': 'Skribbl',
         '❔': 'Codename',
-        '💣': 'KTANE',
+        //'💣': 'KTANE',
+        '💀': 'Dead by daylight',
         // ['⚔️', 'Pummel'],
         // ['👮', 'The Division'],
         // ['🧙', 'Destiny'],}
