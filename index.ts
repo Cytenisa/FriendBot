@@ -133,4 +133,5 @@ client.login(
     } else {
         throw new Error('Channel not found')
     }
+    
 })
