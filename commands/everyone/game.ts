@@ -29,7 +29,7 @@ export const game = async (interaction: CommandInteraction) => {
     await interaction.reply({ content: `C'est parti !`, ephemeral: true })
 
     await channel.send(`Demande de ${interaction.member.user.username} le ${dayjs().format('dddd DD MMMM')}`)
-    const message = await channel.send(`Voulez-vous jouer ce soir ? 😀`)
+    const message = await channel.send(`Voulez-vous jouer ? 😀`)
     await channel.send(`*N'oubliez pas de mettre à jour vos jeux*`)
 
     await message.react('👍')

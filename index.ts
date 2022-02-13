@@ -43,11 +43,6 @@ client
                     options: []
                 },
                 {
-                    name: 'game-dev',
-                    description: 'est-ce qu\'on joue ou non',
-                    options: []
-                },
-                {
                     name: 'play',
                     description: 'avant ou après',
                     options: []
@@ -71,10 +66,6 @@ client
     .on('interactionCreate', async interaction => {
         if (!interaction.isCommand()) return;
         if (interaction.commandName === 'game') {
-            await game(interaction)
-            return;
-        };
-        if (interaction.commandName === 'game-dev') {
             await game(interaction)
             return;
         };

@@ -8,7 +8,7 @@ import { theGame } from '../../sondages';
             name: 'thegame',
             group: 'sondages',
             memberName: 'thegame',
-            description: 'demande si joue avant ou après',
+            description: 'demande le jeu auquel on joue',
             examples: ['oui ou non'],
 
         });
