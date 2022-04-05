@@ -30,7 +30,7 @@ export const game = async (interaction: CommandInteraction) => {
 
     await channel.send(`Demande de ${interaction.member.user.username} le ${dayjs().format('dddd DD MMMM')}`)
     const message = await channel.send(`Voulez-vous jouer ? 😀`)
-    await channel.send(`*N'oubliez pas de mettre à jour vos jeux*`)
+    
 
     await message.react('👍')
     await message.react('👎')
@@ -59,8 +59,8 @@ export const game = async (interaction: CommandInteraction) => {
                (creator === CONSTANTS.Cytenisa || creator === CONSTANTS.Armaldio) &&
                 allVotes.has(CONSTANTS.Nashento) || allVotes.has(CONSTANTS.Framboyse)
             ) || (
-                (creator === CONSTANTS.Cytenisa || creator === CONSTANTS.Armaldio) &&
-                allVotes.has(CONSTANTS.Nashento) || allVotes.has(CONSTANTS.Framboyse)
+                (creator === CONSTANTS.Nashento || creator === CONSTANTS.Framboyse) &&
+                allVotes.has(CONSTANTS.Cytenisa) || allVotes.has(CONSTANTS.Armaldio)
             )
         ) {
             const yes = Array.from(allVotes.values()).filter(emoji => emoji === '👍').length
@@ -105,7 +105,7 @@ export const game = async (interaction: CommandInteraction) => {
 
                         console.log('game reactionsCount', reactionsCount)
                     }
-
+                    await channel.send(`*N'oubliez pas de mettre à jour vos jeux*`)
                     await channel.send(`Nous jouerons donc a ${gameString}, ${whenString}`)
                 }, 15 * 60 * 1000)
             } else {

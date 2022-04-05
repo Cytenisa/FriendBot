@@ -38,17 +38,17 @@ client
 
             const commands: ApplicationCommandData[] = [
                 {
-                    name: 'game',
+                    name: 'play',
                     description: 'est-ce qu\'on joue ou non',
                     options: []
                 },
                 {
-                    name: 'play',
+                    name: 'when',
                     description: 'avant ou après',
                     options: []
                 },
                 {
-                    name: 'thegame',
+                    name: 'what',
                     description: 'quel jeu ?',
                     options: []
                 }
@@ -65,16 +65,16 @@ client
     })
     .on('interactionCreate', async interaction => {
         if (!interaction.isCommand()) return;
-        if (interaction.commandName === 'game') {
+        if (interaction.commandName === 'play') {
             await game(interaction)
             return;
         };
-        if (interaction.commandName === 'play') {
+        if (interaction.commandName === 'when') {
             await play(interaction)
             await thegame(interaction)
             return;
         };
-        if (interaction.commandName === 'thegame') {
+        if (interaction.commandName === 'what') {
             await thegame(interaction)
             return;
         };
