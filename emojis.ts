@@ -5,13 +5,13 @@ export const emojis = {
         '😱': 'Les deux'
     },
     whenTime: {
-        ':one:': '5 min',
-        ':two:': '10 min',
-        ':three:': '15 min',
-        ':four:': '20 min',
-        ':five:': '25 min',
-        ':six:': '30 min',
-        ':seven:': '+1h',
+        '1️⃣': '5 min',
+        '2️⃣': '10 min',
+        '3️⃣': '15 min',
+        '4️⃣': '20 min',
+        '5️⃣': '25 min',
+        '6️⃣': '30 min',
+        '7️⃣': '+1h',
     },
     game: {
         '☠️': 'Left for dead 2',
