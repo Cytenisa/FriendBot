@@ -1,7 +1,7 @@
 import { CommandInteraction, Emoji, Interaction, Message, MessageReaction, ReactionEmoji, ReactionManager, TextChannel, User } from 'discord.js';
 import Commando, { Client, CommandoMessage } from 'discord.js-commando';
 import CONSTANTS from '../../constant'
-import { theGame, avantOuApres } from '../../sondages'
+import { theGame, avantOuApres, WhenTime } from '../../sondages'
 import {emojis} from '../../emojis'
 
 import dayjs from 'dayjs'
@@ -69,6 +69,7 @@ export const game = async (interaction: CommandInteraction) => {
             clearInterval(timeout)
             if (no === 0) {
                 const when = await avantOuApres(interaction, false)
+                const time = await WhenTime(interaction)
                 const game = await theGame(interaction)
 
                 // timeout of 15 minutes

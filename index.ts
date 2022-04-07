@@ -49,6 +49,11 @@ client
                     options: []
                 },
                 {
+                    name: 'whenTime',
+                    description: 'Dans combien de temps ?',
+                    options: []
+                },
+                {
                     name: 'what',
                     description: 'quel jeu ?',
                     options: []

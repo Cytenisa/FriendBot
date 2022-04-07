@@ -5,7 +5,7 @@ import { WhenTime } from '../../sondages';
 
 
 export const whenTime = async (interaction: CommandInteraction) => {
-    await whenTime(interaction)
+    await WhenTime(interaction)
 
     return interaction;
 }
