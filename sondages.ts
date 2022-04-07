@@ -40,3 +40,22 @@ ${Object.entries(emojis.game).map(([icon, name]) => `${icon} ${name}`).join('\n'
         return message
     }
 }
+
+export async function WhenTime(interaction: CommandInteraction) {
+    const channel = interaction.channel as TextChannel
+    if (!interaction.replied) {
+        await interaction.reply({ ephemeral: true, content: `C'est parti !` })
+    }
+    if (channel) {
+        const message = await channel.send(`Dans combien de temps ? 🕐
+
+${Object.entries(emojis.whenTime).map(([icon, name]) => `${icon} ${name}`).join('\n')}
+
+        `)
+        for (let [icon, name] of Object.entries(emojis.whenTime)) {
+            await message.react(icon)
+        }
+
+        return message
+    }
+}

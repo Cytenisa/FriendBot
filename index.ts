@@ -9,6 +9,7 @@ import path from 'path';
 import { game } from './commands/everyone/game'
 import { play } from './commands/everyone/play'
 import { thegame } from './commands/everyone/theGame'
+import { whenTime } from './commands/everyone/whenTime'
 
 // @ts-ignore
 import { CronJob } from 'cron';
@@ -44,7 +45,7 @@ client
                 },
                 {
                     name: 'when',
-                    description: 'avant ou après',
+                    description: 'Quand ?',
                     options: []
                 },
                 {
@@ -71,6 +72,7 @@ client
         };
         if (interaction.commandName === 'when') {
             await play(interaction)
+            await whenTime(interaction)
             await thegame(interaction)
             return;
         };

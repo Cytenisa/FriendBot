@@ -105,7 +105,7 @@ export const game = async (interaction: CommandInteraction) => {
 
                         console.log('game reactionsCount', reactionsCount)
                     }
-                    await channel.send(`*N'oubliez pas de mettre à jour vos jeux*`)
+                    //await channel.send(`*N'oubliez pas de mettre à jour vos jeux*`)
                     await channel.send(`Nous jouerons donc a ${gameString}, ${whenString}`)
                 }, 15 * 60 * 1000)
             } else {
