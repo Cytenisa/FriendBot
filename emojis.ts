@@ -15,7 +15,7 @@ export const emojis = {
     },
     game: {
         '☠️': 'Left for dead 2',
-        '🧟': 'Killing Floor',
+        //'': 'Killing Floor',
         '🎮': 'Core',
         '⚽': 'RL',
         '🏃': 'Fall Guys',
@@ -26,7 +26,7 @@ export const emojis = {
         '💀': 'Dead by daylight',
         '⚔️': 'Pummel',
         '🪀': 'Fling to the finish',
-        '' : 'WWZ'
+        '🧟' : 'WWZ'
         // ['👮', 'The Division'],
         // ['🧙', 'Destiny'],}
     },
