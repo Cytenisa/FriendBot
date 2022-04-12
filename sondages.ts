@@ -47,6 +47,7 @@ export async function WhenTime(interaction: CommandInteraction) {
         await interaction.reply({ ephemeral: true, content: `C'est parti !` })
     }
     if (channel) {
+        await channel.guild.emojis.fetch()
         const message = await channel.send(`Dans combien de temps ? 🕐
 
 ${Object.entries(emojis.whenTime).map(([icon, name]) => `${icon} ${name}`).join('\n')}
