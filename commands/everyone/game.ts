@@ -61,8 +61,11 @@ export const game = async (interaction: CommandInteraction) => {
             ) || (
                 (creator === CONSTANTS.Nashento || creator === CONSTANTS.Framboyse) &&
                 allVotes.has(CONSTANTS.Cytenisa) || allVotes.has(CONSTANTS.Armaldio)
-            )
-        ) {
+            ) || (
+                (creator === CONSTANTS.Cytenisa || creator === CONSTANTS.Armaldio) &&
+                allVotes.has(CONSTANTS.Cytenisa) || allVotes.has(CONSTANTS.Armaldio)
+            ) 
+            ){
             const yes = Array.from(allVotes.values()).filter(emoji => emoji === '👍').length
             const no = Array.from(allVotes.values()).filter(emoji => emoji === '👎').length
 
