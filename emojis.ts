@@ -11,8 +11,8 @@ export const emojis = {
         '4️⃣': '20 min',
         '5️⃣': '25 min',
         '6️⃣': '30 min',
-        '7️⃣': '30<x<60',
-        '8️⃣': '+1h'
+        '7️⃣': 'entre 30 min et 1 heure',
+        '8️⃣': '+ 1h'
     },
     game: {
         '☠️': 'Left for dead 2',
