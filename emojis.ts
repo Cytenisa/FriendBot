@@ -23,11 +23,12 @@ export const emojis = {
         // '⛏️': 'Minecraft',
         '✏️': 'Skribbl',
         '❔': 'Codename',
-        '💣': 'KTANE',
+        //'💣': 'KTANE',
         '💀': 'Dead by daylight',
         '⚔️': 'Pummel',
         '🪀': 'Fling to the finish',
-        '🧟' : 'WWZ'
+        '🧟' : 'WWZ',
+        '🤖' : 'Space Punk'
         // ['👮', 'The Division'],
         // ['🧙', 'Destiny'],}
     },
