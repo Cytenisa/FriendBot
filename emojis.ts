@@ -17,18 +17,19 @@ export const emojis = {
     game: {
         '☠️': 'Left for dead 2',
         //'': 'Killing Floor',
-        '🎮': 'Core',
+        //'🎮': 'Core',
         '⚽': 'RL',
         '🏃': 'Fall Guys',
         // '⛏️': 'Minecraft',
         '✏️': 'Skribbl',
         '❔': 'Codename',
         //'💣': 'KTANE',
-        '💀': 'Dead by daylight',
+        //'💀': 'Dead by daylight',
         '⚔️': 'Pummel',
         '🪀': 'Fling to the finish',
-        '🧟' : 'WWZ',
-        '🤖' : 'Space Punk'
+        '🧟': 'WWZ',
+        '🚊': 'Unrailed',
+        //'🤖': 'Space Punk'
         // ['👮', 'The Division'],
         // ['🧙', 'Destiny'],}
     },
