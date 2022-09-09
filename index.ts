@@ -117,7 +117,7 @@ client
 client.login(
     process.env.TOKEN
 ).then(c => {
-    const channel = client.channels.cache.get('880474479627743252') as TextChannel
+    const channel = client.channels.cache.get('839542741549318154') as TextChannel
     if (channel) {
         var job = new CronJob(
             '5 17 * * THU',
